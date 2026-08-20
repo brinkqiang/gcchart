@@ -1,4 +1,4 @@
-name: "gcchart"
+name: "brinkqiang-gcchart"
 description: "Stacked bar chart of daily GitHub contributions, broken down by Commits / PRs / Issues / Reviews. Hand-drawn style."
 author: "pipipi-dev"
 
