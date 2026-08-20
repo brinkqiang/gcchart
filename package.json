@@ -1,0 +1,61 @@
+{
+  "name": "gcchart",
+  "version": "1.1.0",
+  "description": "Render your daily GitHub contributions as a stacked bar chart with category breakdown (Commits/PRs/Issues/Reviews) and an optional cumulative total line. Usable as both a GitHub Action (pipipi-dev/gcchart) and a CLI (`npx gcchart`).",
+  "license": "MIT",
+  "author": "pipipi-dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipipi-dev/gcchart.git"
+  },
+  "homepage": "https://github.com/pipipi-dev/gcchart",
+  "bugs": {
+    "url": "https://github.com/pipipi-dev/gcchart/issues"
+  },
+  "keywords": [
+    "github",
+    "contributions",
+    "chart",
+    "svg",
+    "github-action",
+    "profile-readme",
+    "cli"
+  ],
+  "main": "dist/cli.js",
+  "type": "module",
+  "bin": {
+    "gcchart": "bin/gcchart.js"
+  },
+  "files": [
+    "bin/",
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "sample": "tsx scripts/sample.ts",
+    "fetch": "tsx src/cli.ts",
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@clack/prompts": "^1.3.0",
+    "@octokit/graphql": "^7.1.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "opentype.js": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/opentype.js": "^1.3.9",
+    "rimraf": "^5.0.5",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.0"
+  }
+}

@@ -1,0 +1,33 @@
+name: "gcchart"
+description: "Stacked bar chart of daily GitHub contributions, broken down by Commits / PRs / Issues / Reviews. Hand-drawn style."
+author: "pipipi-dev"
+
+branding:
+  icon: "bar-chart-2"
+  color: "green"
+
+inputs:
+  github_user_name:
+    description: "GitHub username to read contributions from. Defaults to the repository owner, which matches the typical case where the action runs in your profile repo (your-username/your-username)."
+    required: false
+    default: ${{ github.repository_owner }}
+  github_token:
+    description: "Token used for the GraphQL API and for committing the output. Defaults to the action token."
+    required: false
+    default: ${{ github.token }}
+  outputs:
+    description: "List of files to generate, one per line. Each line is PATH[?query] - query supports period, granularity, cumulative, style, theme, types. See README for examples."
+    required: false
+    default: "contributions.svg"
+  target_branch:
+    description: "Branch to commit generated SVGs to. Force-pushed every run, so don't store other content here. Created automatically if it doesn't exist."
+    required: false
+    default: "output"
+  commit_message:
+    description: "Commit message used when pushing to target_branch."
+    required: false
+    default: "chore: update contribution chart"
+
+runs:
+  using: docker
+  image: Dockerfile
